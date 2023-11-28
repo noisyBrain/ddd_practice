@@ -1,5 +1,5 @@
-import { EmailValueObject } from './ValueObjectsO/email.vo';
-import { UsernameValueObject } from './ValueObjectsO/username.vo';
+import { EmailValueObject } from './ValueObjects/email.vo';
+import { UsernameValueObject } from './ValueObjects/username.vo';
 
 export class Profile {
   username: UsernameValueObject;
