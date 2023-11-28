@@ -1,4 +1,5 @@
 import { EmailValueObject } from './ValueObjects/email.vo';
+import { PasswordValueObject } from './ValueObjects/password.vo';
 import { UsernameValueObject } from './ValueObjects/username.vo';
 
 export class Profile {
@@ -6,7 +7,7 @@ export class Profile {
 
   email: EmailValueObject;
 
-  password: string;
+  password: PasswordValueObject;
 
   desires: string[]; // NOTE: should be a Desire Model
 
