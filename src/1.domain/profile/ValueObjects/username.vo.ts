@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString, Matches, MaxLength, MinLength } from "class-validator";
+import { IsNotEmpty, IsString, Matches, MaxLength, MinLength } from 'class-validator';
 
 const usernameRegex = /^[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]$/;
 
