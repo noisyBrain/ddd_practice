@@ -1,21 +1,22 @@
 import { BaseValueObject } from '../../shared/ValueObjects/base.vo';
 
+type UsernameProps = {
+  value: string;
+}
 const usernameRegex = /^[a-zA-Z][a-zA-Z0-9]{1,14}[a-zA-Z0-9]$/;
 
-export class Username extends BaseValueObject<Username> {
-  private _value: string;
-
-  constructor(username: Username) {
+export class Username extends BaseValueObject<UsernameProps> {
+  private constructor(username: UsernameProps) {
     super(username);
   }
 
-  isValid(username: Username): boolean {
-    return usernameRegex.test(username._value);
+  isValid(username: UsernameProps): boolean {
+    return usernameRegex.test(username.value);
   }
 
-  newUsername(username: Username): Username {
-    if (!this.isValid(username)) throw new Error('Username must be valid');
+  newUsername(username: string): Username {
+    if (!this.isValid({ value: username })) throw new Error('Username must be valid');
 
-    return new Username(username);
+    return new Username({ value: username });
   }
 }
