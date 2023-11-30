@@ -1,4 +1,4 @@
-import { BaseValueObject } from './base.vo';
+import { BaseValueObject } from '../../shared/ValueObjects/base.vo';
 
 type EmailProps = { localPart: string; domainPart: string };
 
