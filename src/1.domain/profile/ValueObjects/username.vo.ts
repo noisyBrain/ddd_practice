@@ -2,7 +2,7 @@ import { IsNotEmpty, IsString, Matches, MaxLength, MinLength } from 'class-valid
 
 const usernameRegex = /^[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]$/;
 
-export class UsernameValueObject {
+export class Username {
   @IsNotEmpty()
   @IsString()
   @MinLength(3)
@@ -19,7 +19,7 @@ export class UsernameValueObject {
     this.username = username;
   }
 
-  newUsername(username: string): UsernameValueObject {
-    return new UsernameValueObject(username);
+  newUsername(username: string): Username {
+    return new Username(username);
   }
 }

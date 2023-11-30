@@ -1,6 +1,6 @@
 import { IsStrongPassword } from 'class-validator';
 
-export class PasswordValueObject {
+export class Password {
   @IsStrongPassword({
     minLength: 8,
     minNumbers: 2,
@@ -15,6 +15,6 @@ export class PasswordValueObject {
   }
 
   newPassword(password: string) {
-    return new PasswordValueObject(password);
+    return new Password(password);
   }
 }

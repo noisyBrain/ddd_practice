@@ -1,6 +1,6 @@
 import { IsEmail } from 'class-validator';
 
-export class EmailValueObject {
+export class Email {
   @IsEmail()
   readonly _email: string;
 
@@ -9,6 +9,6 @@ export class EmailValueObject {
   }
 
   newEmail(newEmail: string) {
-    return new EmailValueObject(newEmail);
+    return new Email(newEmail);
   }
 }
