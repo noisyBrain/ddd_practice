@@ -1,3 +1,5 @@
+// FIX: this must not implement external libraries 
+
 import { IsStrongPassword } from 'class-validator';
 
 export class Password {
