@@ -1,25 +1,21 @@
-import { IsNotEmpty, IsString, Matches, MaxLength, MinLength } from 'class-validator';
+import { BaseValueObject } from '../../shared/ValueObjects/base.vo';
 
-const usernameRegex = /^[a-zA-Z][a-zA-Z0-9]*[a-zA-Z0-9]$/;
+const usernameRegex = /^[a-zA-Z][a-zA-Z0-9]{1,14}[a-zA-Z0-9]$/;
 
-export class Username {
-  @IsNotEmpty()
-  @IsString()
-  @MinLength(3)
-  @MaxLength(8)
-  @Matches(usernameRegex, 
-    { message: `
-      - Must start with a letter (uppercase or lowercase).
-      - Can be followed by zero or more letters (uppercase or lowercase) or digits.
-      - Must end with a letter or a digit.
-` })
-  readonly username: string;
+export class Username extends BaseValueObject<Username> {
+  private _value: string;
 
-  constructor(username: string) {
-    this.username = username;
+  constructor(username: Username) {
+    super(username);
   }
 
-  newUsername(username: string): Username {
+  isValid(username: Username): boolean {
+    return usernameRegex.test(username._value);
+  }
+
+  newUsername(username: Username): Username {
+    if (!this.isValid(username)) throw new Error('Username must be valid');
+
     return new Username(username);
   }
 }
