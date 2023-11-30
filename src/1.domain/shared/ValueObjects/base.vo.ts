@@ -9,7 +9,7 @@ export abstract class BaseValueObject<T extends BaseValueObjectProps> {
     this.props = props;
   }
 
-  equals(value: T): boolean {
+  equal(value: T): boolean {
     if (!(value instanceof BaseValueObject<T>)) return false;
     return JSON.stringify(value) == JSON.stringify(this.props)
   }
