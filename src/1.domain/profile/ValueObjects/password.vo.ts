@@ -1,19 +1,15 @@
-// FIX: this must not implement external libraries 
+import { hash } from 'bcrypt';
 
-import { IsStrongPassword } from 'class-validator';
+import { BaseValueObject } from '../../shared/ValueObjects/base.vo';
 
-export class Password {
-  @IsStrongPassword({
-    minLength: 8,
-    minNumbers: 2,
-    minLowercase: 4,
-    minUppercase: 1,
-    minSymbols: 1
-  })
-  _password: string;
+type PasswordProps = {
+  value: string;
+  hashed: boolean;
+};
 
-  constructor(password: string) {
-    this._password = password;
+export class Password extends BaseValueObject<PasswordProps> {
+  private constructor(password: PasswordProps) {
+    super(password);
   }
 
   newPassword(password: string) {
