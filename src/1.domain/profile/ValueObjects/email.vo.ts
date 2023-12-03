@@ -3,8 +3,6 @@ import { BaseValueObject } from '../../shared/ValueObjects/base.vo';
 type EmailProps = { address: string };
 
 export class Email extends BaseValueObject<EmailProps> {
-  address: string;
-
   private constructor(email: EmailProps) {
     super(email);
   }
@@ -14,6 +12,7 @@ export class Email extends BaseValueObject<EmailProps> {
   }
 
   static create(newEmail: EmailProps) {
+    // WARN: how should I validate newEmail since I can't use "isValid" method as it isn't static?
     if (newEmail.address) {
       return new Email(newEmail);
     }
