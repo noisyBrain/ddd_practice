@@ -9,10 +9,10 @@ type BaseValueObjectProps = {
 
 */
 export abstract class BaseValueObject<T extends BaseValueObjectProps> {
-  private readonly props: T;
+  private readonly _props: T;
 
   constructor(props: T) {
-    this.props = props;
+    this._props = props;
   }
 
   abstract isValid(props: T): boolean;
