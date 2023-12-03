@@ -12,7 +12,20 @@ export class Password extends BaseValueObject<PasswordProps> {
     super(password);
   }
 
-  newPassword(password: string) {
-    return new Password(password);
+  isValid(password: PasswordProps): boolean {
+    return /^(?=.*[A-Z])(?=.*[a-z])(?=.*[^A-Za-z0-9]).{8,16}$/.test(
+      password.value,
+    );
+  }
+
+  static async createPassword(password: string) {
+    try {
+      return new Password({
+        value: await hash(password, 10),
+        hashed: true,
+      });
+    } catch (error) {
+      throw new Error(error);
+    }
   }
 }
