@@ -1,29 +1,23 @@
 import { BaseValueObject } from '../../shared/ValueObjects/base.vo';
 
-type EmailProps = { localPart: string; domainPart: string };
+type EmailProps = { address: string };
 
-// TODO: apply method to validate email format
 export class Email extends BaseValueObject<EmailProps> {
-  readonly _localPart: string;
-  readonly _domainPart: string;
+  address: string;
 
   private constructor(email: EmailProps) {
     super(email);
   }
 
-  get localPart() {
-    return this._localPart;
-  }
-
-  get domainPart() {
-    return this._domainPart;
+  isValid(value: EmailProps): boolean {
+    return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(value.address);
   }
 
   static create(newEmail: EmailProps) {
-    if ((newEmail.localPart.length + newEmail.domainPart.length) > 40) {
-      throw new Error("Email must be shorter than 40 characters");
+    if (newEmail.address) {
+      return new Email(newEmail);
     }
 
-    return new Email(newEmail);
+    throw new Error('Invalid format');
   }
 }
