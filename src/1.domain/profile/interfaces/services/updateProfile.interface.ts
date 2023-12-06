@@ -1,7 +1,7 @@
-import { IUpdatePasswordDTO } from '../dtos/profile/updatePasswordDTO.interface';
-import { IUpdateEmailDTO } from '../dtos/profile/updateEmailDTO.interface';
-import { IUpdateUsernameDTO } from '../dtos/profile/updateUsernameDTO.interface';
-import { IUpdateInterestDTO } from '../dtos/profile/updateInterestDTO.interface';
+import { IUpdatePasswordDTO } from '../dtos/updatePasswordDTO.interface';
+import { IUpdateEmailDTO } from '../dtos/updateEmailDTO.interface';
+import { IUpdateUsernameDTO } from '../dtos/updateUsernameDTO.interface';
+import { IUpdateInterestDTO } from '../dtos/updateInterestDTO.interface';
 
 export interface IUpdateProfileService {
   updatePassword(passwordDTO: IUpdatePasswordDTO): void;
