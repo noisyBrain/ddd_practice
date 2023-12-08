@@ -1,3 +1,5 @@
 export interface IUpdateEmailDTO {
-  getEmail(): string;
+  getOldEmail(): string;
+
+  getNewEmail(): string;
 }
